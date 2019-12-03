@@ -19,6 +19,13 @@ class AddPersons extends Component {
       age: e.target.value
     });
 
+  resetFormHandler = () => {
+    this.setState({
+      name: '',
+      age: ''
+    });
+  };
+
   render() {
     return (
       <div>
@@ -40,6 +47,7 @@ class AddPersons extends Component {
           }>
           Add Person
         </button>
+        <button onClick={this.resetFormHandler}>Reset</button>
       </div>
     );
   }

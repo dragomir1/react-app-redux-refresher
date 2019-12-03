@@ -10,7 +10,12 @@ class Persons extends Component {
       <div>
         <AddPerson personAdded={this.props.addPerson} />
         {this.props.person.map(p => (
-          <Person key={p.id} name={p.name} age={p.age} />
+          <Person
+            key={p.id}
+            name={p.name}
+            age={p.age}
+            clicked={() => this.props.deletePerson(p.id)}
+          />
         ))}
       </div>
     );
@@ -29,7 +34,9 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.ADD_PERSON,
         personData: { name: name, age: age }
-      })
+      }),
+    deletePerson: id =>
+      dispatch({ type: actionTypes.DELETE_PERSON, personId: id })
   };
 };
 
